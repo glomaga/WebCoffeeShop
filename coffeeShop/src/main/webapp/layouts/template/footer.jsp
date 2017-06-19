@@ -1,0 +1,1 @@
+<p><font color="grey">&copy;GLOMAGA 2017</font></p>
