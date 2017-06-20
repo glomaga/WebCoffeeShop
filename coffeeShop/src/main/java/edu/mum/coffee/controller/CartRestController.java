@@ -1,5 +1,6 @@
 package edu.mum.coffee.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -7,6 +8,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,8 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import edu.mum.coffee.domain.Order;
 import edu.mum.coffee.domain.Orderline;
+import edu.mum.coffee.domain.Person;
 import edu.mum.coffee.domain.Product;
 import edu.mum.coffee.service.OrderService;
+import edu.mum.coffee.service.PersonService;
 import edu.mum.coffee.service.ProductService;
 
 @RestController
@@ -28,7 +33,9 @@ public class CartRestController {
 	private OrderService orderService;
 	@Autowired
 	private ProductService productService;
-
+	@Autowired
+	private PersonService personService;
+	
 	// http://localhost:8081/rest/cart/84
 	@RequestMapping(value = "/{cartId}", method = RequestMethod.GET)
 	public Order read(@PathVariable(value = "cartId") int cartId) {
@@ -59,8 +66,13 @@ public class CartRestController {
 	public void addItem(@PathVariable int productId, HttpSession session, HttpServletRequest request) {
 
 		if (session.getAttribute("cartId") == null) {
-			// System.out.println("Es vacio!!!");
+			 System.out.println("Es vacio!!!");
 			Order newtemp = new Order();
+			newtemp.setOrderDate(new Date());
+			 Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		      String name = auth.getName(); //get logged in username is the email
+		      Person newPerson = personService.findByEmail(name).get(0);
+		      newtemp.setPerson(newPerson);
 			int id = orderService.save(newtemp).getId();
 			session.setAttribute("cartId", id);
 		}
@@ -77,7 +89,7 @@ public class CartRestController {
 		ltem.setProduct(ptem);
 		ltem.setOrder(temp);
 		ltem.setQuantity(1);
-		temp.addOrderLine(ltem);
+		temp.addOrderLine(ltem);		
 		orderService.save(temp);
 	}
 
@@ -88,7 +100,11 @@ public class CartRestController {
 		System.out.println("order " + Order);
 		System.out.println("linea a eliminar " + orderline);
 		Order saved = orderService.findById(Order);
+		orderline.setOrder(saved);
+
+		System.out.println("linea a eliminar " + orderline);
 		saved.removeOrderLine(orderline);
+		
 		orderService.save(saved);
 	}
 }

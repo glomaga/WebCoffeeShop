@@ -35,13 +35,15 @@ public class RegisterController {
 	   public String login(Model model) {
 		 Person newPerson = new Person();
 		   model.addAttribute("newPerson", newPerson);
+			 Users newUser = new Users();
+			   model.addAttribute("newUser", newUser);
 	      return "addPerson";
 	   }
 	 
 	 
 
 		@RequestMapping(value = "/register/add", method = RequestMethod.POST)
-		public String Save(Model model, @ModelAttribute("newPerson") @Valid Person newPerson, BindingResult result, HttpServletRequest request) {
+		public String Save(Model model, @ModelAttribute("newPerson") @Valid Person newPerson, @ModelAttribute("Users") Users user ,BindingResult result, HttpServletRequest request) {
 			
 			if(result.hasErrors()) {
 				   return "addPerson";
@@ -49,6 +51,7 @@ public class RegisterController {
 			 System.out.println("Valores "+newPerson);
 				personService.savePerson(newPerson);
 				
+				System.out.println("clave"+ user.getPassword() );
 				Users newUser= new Users();
 				newUser.setUsername(newPerson.getEmail());
 				newUser.setPassword(newPerson.getFirstName());
@@ -60,7 +63,7 @@ public class RegisterController {
 				authoritiesService.saveAuthorities(newAuto);
 			  
 				
-			Person newPerson2 = new Person();
+			   Person newPerson2 = new Person();
 			   model.addAttribute("newPerson", newPerson2);
 			   
 			return "redirect:/login";

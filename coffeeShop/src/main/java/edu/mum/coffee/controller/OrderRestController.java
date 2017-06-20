@@ -1,9 +1,11 @@
 package edu.mum.coffee.controller;
 
+import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,11 +30,29 @@ public class OrderRestController {
 	}
 	
 	//http://localhost:8081/rest/order/add	
-	@ResponseStatus(value = HttpStatus.CREATED)
+//	@ResponseStatus(value = HttpStatus.CREATED)
+//	@RequestMapping(value = "add", method = RequestMethod.POST)
+//	public void Save(@RequestBody Order order) {
+//		orderService.save(order);
+//	}
+//	
 	@RequestMapping(value = "add", method = RequestMethod.POST)
-	public void Save(@RequestBody Order order) {
-		orderService.save(order);
+	public  ResponseEntity<Void> Save(@RequestBody Order order) {
+		System.out.println(order);
+		Order saved = orderService.save(order);
+		return  ResponseEntity.created(createOrderURI(saved)).build();		
 	}
+
+       private URI createOrderURI(Order saved) {
+		URI uri = null;
+		try {
+		uri = new URI("/rest/order/"+saved.getId());
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		return uri;
+	}
+
 	
 
 	//http://localhost:8081/rest/order/update	
