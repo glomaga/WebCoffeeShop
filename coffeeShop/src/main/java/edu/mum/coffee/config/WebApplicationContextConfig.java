@@ -34,16 +34,17 @@ import org.springframework.web.servlet.view.xml.MarshallingView;
 import org.springframework.web.util.UrlPathHelper;
 
 
+
 @Configuration
 public class WebApplicationContextConfig extends WebMvcConfigurerAdapter {
     
 	// esto es para poder utilizar @MatrixVariable(pathVar="params") en los
 		// controllers
-    @Override
-    public void configurePathMatch(PathMatchConfigurer configurer) {
+	@Override
+    public void configurePathMatch(PathMatchConfigurer
+    configurer) {
        UrlPathHelper urlPathHelper = new UrlPathHelper();
        urlPathHelper.setRemoveSemicolonContent(false);
-
        configurer.setUrlPathHelper(urlPathHelper);
     }
     
@@ -62,6 +63,7 @@ public class WebApplicationContextConfig extends WebMvcConfigurerAdapter {
     			registry.addInterceptor(localeChangeInterceptor);
     }
     
+
 //    
 //    
 //    @Bean(name = "validator")

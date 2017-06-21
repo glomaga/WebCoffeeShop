@@ -42,6 +42,13 @@
       <put-attribute name="content" value="/views/addPerson.jsp" />
    </definition>
    
+       <definition name="editProfile" extends="baseLayout">
+      <put-attribute name="title" value="Edit User" />
+      <put-attribute name="heading" value="Edit Profile User" />
+      <put-attribute name="tagline" value="Details" />
+      <put-attribute name="content" value="/views/editProfile.jsp" />
+   </definition>
+   
 <!--    <definition name="addProduct" extends="baseLayout"> -->
 <!--       <put-attribute name="title" value="Products" /> -->
 <!--       <put-attribute name="heading" value="Products" /> -->
@@ -62,6 +69,20 @@
       <put-attribute name="heading" value="Person" />
       <put-attribute name="tagline" value="Admin Person" />
       <put-attribute name="content" value="/views/AdminPerson.jsp" />
+   </definition>
+   
+         <definition name="AdminOrder" extends="baseLayout">
+      <put-attribute name="title" value="Order" />
+      <put-attribute name="heading" value="Order" />
+      <put-attribute name="tagline" value="Admin Order" />
+      <put-attribute name="content" value="/views/AdminOrder.jsp" />
+   </definition>
+   
+            <definition name="AdminOrderline" extends="baseLayout">
+      <put-attribute name="title" value="OrderLine" />
+      <put-attribute name="heading" value="OrderLine" />
+      <put-attribute name="tagline" value="Admin OrderLine" />
+      <put-attribute name="content" value="/views/AdminOrderline.jsp" />
    </definition>
    
    <definition name="login" extends="baseLayout">

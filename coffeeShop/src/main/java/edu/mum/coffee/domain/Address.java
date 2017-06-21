@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Entity
 public class Address {
@@ -22,6 +23,7 @@ public class Address {
 	private String country;
 	
 	@NotNull(message = "{NotNull.Person.address.zipcode.validation}")
+	@Pattern(regexp = "^[0-9]{5}(?:-[0-9]{4})?$", message = "{Pattern.address.zipcode.validation}")
 	private String zipcode;
 
 	public String getCity() {

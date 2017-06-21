@@ -71,6 +71,7 @@ public class CartRestController {
 			newtemp.setOrderDate(new Date());
 			 Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		      String name = auth.getName(); //get logged in username is the email
+		      System.out.println("nombre usuario a crear orden "+name);
 		      Person newPerson = personService.findByEmail(name).get(0);
 		      newtemp.setPerson(newPerson);
 			int id = orderService.save(newtemp).getId();
@@ -97,14 +98,17 @@ public class CartRestController {
 	@RequestMapping(value = "/remove/{Order}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.OK)
 	public void removeItem(@PathVariable int Order, @RequestBody Orderline orderline, HttpSession session) {
-		System.out.println("order " + Order);
-		System.out.println("linea a eliminar " + orderline);
-		Order saved = orderService.findById(Order);
-		orderline.setOrder(saved);
-
-		System.out.println("linea a eliminar " + orderline);
-		saved.removeOrderLine(orderline);
 		
-		orderService.save(saved);
+			Order temp= orderService.findById(Order);
+			System.out.println("linea a eliminar " + orderline.getId());
+			List<Orderline> lines= temp.getOrderLines();
+			Orderline tempdelete = null;
+			for (Orderline orderline2 : lines) {
+				if (orderline2.getId()==orderline2.getId()){
+					tempdelete=orderline2;
+				}
+			}
+			temp.removeOrderLine(tempdelete);
+			orderService.save(temp);
 	}
 }

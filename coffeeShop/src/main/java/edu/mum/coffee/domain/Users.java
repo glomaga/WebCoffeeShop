@@ -3,12 +3,15 @@ package edu.mum.coffee.domain;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "users")
 public class Users {
 	@Id
 private String username;
+	
+@NotNull(message= "{NotNull.user.password.validation}")
 private String password;
 private boolean enabled;
 public String getUsername() {

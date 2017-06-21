@@ -11,6 +11,8 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import edu.mum.coffee.validator.Email;
+
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Person {
@@ -23,13 +25,15 @@ public class Person {
 
 	@NotNull(message = "{NotNull.Person.lastname.validation}")
 	private String lastName;
-
+	
+	//@Email
 	@Pattern(regexp = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$", message = "{Pattern.Person.email.validation}")
 	@NotNull(message = "{NotNull.Person.email.validation}")
 	private String email;
 
-	@Valid
+	
 	@OneToOne(cascade = CascadeType.ALL)
+	@Valid
 	private Address address;
 
 	@NotNull(message = "{NotNull.Person.phone.validation}")

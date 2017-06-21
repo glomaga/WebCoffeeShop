@@ -18,13 +18,13 @@
 	<legend>Info Order</legend>
 	</fieldset>
 	<div class="form-group">
-	<label class="control-label col-lg-2 col-lg-2" for="id">Order ID:</label>{{cart.id}}
+	<label class="control-label col-lg-2 col-lg-2" for="id"><spring:message code="cart.form.orderid" />:</label>{{cart.id}}
 	</div>
 		<div class="form-group">
-	<label class="control-label col-lg-2 col-lg-2" for="orderDate">Order Date:</label>{{cart.orderDate}}
+	<label class="control-label col-lg-2 col-lg-2" for="orderDate"><spring:message code="cart.form.orderdate" />:</label>{{cart.orderDate}}
 	</div>
 	<div class="form-group">
-	<label class="control-label col-lg-2 col-lg-2" for="orderDate">Email User:</label>{{cart.person.email}}	
+	<label class="control-label col-lg-2 col-lg-2" for="orderDate"><spring:message code="cart.form.email" />:</label>{{cart.person.email}}	
 	</div>
 </section> 
 				<a class="btn btn-danger pull-left" ng-click="clearCart()"> <span

@@ -3,6 +3,7 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,9 +16,9 @@
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 
  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.1/angular.min.js"></script> 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
  <script src="/resources/js/controllers.js"></script> 
-
+  <script src="/resources/js/register.js"></script> 
 
 </head>
 
@@ -27,6 +28,7 @@
 		<sec:authorize access="isAuthenticated()">
 		<sec:authentication var="principal" property="principal" />
 		<spring:message code="User" />: ${principal.username}
+		<a href="/profile">Update Profile</a>
 		</sec:authorize>	
 			<a href="?language=en">English</a>|<a href="?language=es">Spanish</a> 
 			<sec:authorize access="isAnonymous()">
