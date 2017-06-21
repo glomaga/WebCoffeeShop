@@ -38,10 +38,10 @@ public class OrderRestController {
 	//http://localhost:8081/rest/order/add	
 	@ResponseStatus(value = HttpStatus.CREATED)
 	@RequestMapping(value = "add", method = RequestMethod.POST)
-	public void Save(@RequestBody Order order) {
+	public Order Save(@RequestBody Order order) {
 		for(Orderline ol:order.getOrderLines())
 			ol.setOrder(order);
-		orderService.save(order);
+		return orderService.save(order);
 	}
 
 
@@ -56,7 +56,7 @@ public class OrderRestController {
 
 	//http://localhost:8081/rest/order/delete	
 	@ResponseStatus(value = HttpStatus.OK)
-	@RequestMapping(value = "delete", method = RequestMethod.DELETE)
+	@RequestMapping(value = "delete", method = RequestMethod.POST)
 	public void Delete(@RequestBody Order order) {
 		for(Orderline ol:order.getOrderLines())
 			ol.setOrder(order);

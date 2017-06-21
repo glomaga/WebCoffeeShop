@@ -7,9 +7,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.mum.coffee.domain.Person;
 import edu.mum.coffee.domain.Product;
 import edu.mum.coffee.service.ProductService;
 
@@ -29,8 +31,8 @@ public class ProductRestController {
 	//http://localhost:8081/rest/products/add	
 	@ResponseStatus(value = HttpStatus.CREATED)
 	@RequestMapping(value = "add", method = RequestMethod.POST)
-	public void Save(@RequestBody Product product) {
-		 productService.save(product);
+	public Product Save(@RequestBody Product product) {
+		 return productService.save(product);
 	}
 	
 
@@ -43,9 +45,16 @@ public class ProductRestController {
 
 	//http://localhost:8081/rest/products/delete	
 	@ResponseStatus(value = HttpStatus.OK)
-	@RequestMapping(value = "delete", method = RequestMethod.DELETE)
+	@RequestMapping(value = "delete", method = RequestMethod.POST)
 	public void Delete(@RequestBody Product product) {
 		 productService.delete(product);
+	}
+	
+	//http://localhost:8081/rest/products/seach	
+	@ResponseStatus(value = HttpStatus.OK)
+	@RequestMapping(value = "search", method = RequestMethod.GET)
+	public Product Search(@RequestParam("ProductKey") int ProductKey) {
+		return productService.getProduct(ProductKey);
 	}
 	
 }

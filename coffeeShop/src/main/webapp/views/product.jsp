@@ -46,7 +46,7 @@
 					class="glyphicon-hand-left glyphicon"></span> <spring:message
 						code="product.back" />
 				</a> 
-				<sec:authorize access="isAuthenticated()">
+				<sec:authorize access="hasRole('ROLE_USER') ">
 				<a href="#" class="btn btn-warning btn-large"
 					ng-click="addToCart('${product.id}')"> <span
 					class="glyphicon-shopping-cart glyphicon"></span> <spring:message

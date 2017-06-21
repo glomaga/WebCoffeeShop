@@ -67,22 +67,4 @@ public class OrderController {
 	}
 
 	
-//	@RequestMapping("/order/admin/line/delete")
-//	public String DeleteLine(Model model, @RequestParam("lineKey") String lineKey1, @RequestParam("orderKey") String orderKey1) {
-//		int orderKey= Integer.parseInt(orderKey1);
-//		int lineKey= Integer.parseInt(lineKey1);
-//		Order temp= orderService.findById(orderKey);
-//		List<Orderline> lines= temp.getOrderLines();
-//		Orderline tempdelete = null;
-//		for (Orderline orderline : lines) {
-//			if (orderline.getId()==lineKey){
-//				tempdelete=orderline;
-//			}
-//		}
-//		System.out.println("line a eliminar "+ tempdelete);
-//		temp.removeOrderLine(tempdelete);
-//		 model.addAttribute("orderlines", orderService.findById(orderKey).getOrderLines());
-//		  return "AdminOrderline";
-//	}
-	
 }
