@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+   "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+   
+   <definition name="baseLayout" template="/layouts/template/baseLayout.jsp">
+      <put-attribute name="title" value="Ejemplo Title" />
+      <put-attribute name="heading" value="" />
+      <put-attribute name="tagline" value="" />
+      <put-attribute name="navigation" value="/layouts/template/navigation.jsp" />
+      <put-attribute name="content" value="" />
+      <put-attribute name="footer" value="/layouts/template/footer.jsp" />
+   </definition>
+   
+   <definition name="welcome" extends="baseLayout">
+      <put-attribute name="title" value="Productos" />
+      <put-attribute name="heading" value="Produtos" />
+      <put-attribute name="tagline" value="Todos los productos disponibles en la tienda" />
+      <put-attribute name="content" value="/views/products.jsp" />
+   </definition>
+   
+   <definition name="products" extends="baseLayout">
+      <put-attribute name="title" value="Productos" />
+      <put-attribute name="heading" value="Productos" />
+      <put-attribute name="tagline" value="Todos los productos disponibles en la tienda" />
+      <put-attribute name="content" value="/views/products.jsp" />
+   </definition>
+   
+   <definition name="product" extends="baseLayout">
+      <put-attribute name="title" value="Producto" />
+      <put-attribute name="heading" value="Producto" />
+      <put-attribute name="tagline" value="Detalles" />
+      <put-attribute name="content" value="/views/product.jsp" />
+   </definition>
+   
+   
+    <definition name="addPerson" extends="baseLayout">
+      <put-attribute name="title" value="Registro de Usuario" />
+      <put-attribute name="heading" value="Registro de Usuario" />
+      <put-attribute name="tagline" value="Detalles" />
+      <put-attribute name="content" value="/views/addPerson.jsp" />
+   </definition>
+   
+       <definition name="editProfile" extends="baseLayout">
+      <put-attribute name="title" value="Editar Usuario" />
+      <put-attribute name="heading" value="Editar Perfil Usuario" />
+      <put-attribute name="tagline" value="Detalles" />
+      <put-attribute name="content" value="/views/editProfile.jsp" />
+   </definition>
+   
+<!--    <definition name="addProduct" extends="baseLayout"> -->
+<!--       <put-attribute name="title" value="Products" /> -->
+<!--       <put-attribute name="heading" value="Products" /> -->
+<!--       <put-attribute name="tagline" value="Add Product" /> -->
+<!--       <put-attribute name="content" value="/views/addProduct.jsp" /> -->
+<!--    </definition> -->
+   
+   
+      <definition name="AdminProduct" extends="baseLayout">
+      <put-attribute name="title" value="Productos" />
+      <put-attribute name="heading" value="Productos" />
+      <put-attribute name="tagline" value="Admin Productos" />
+      <put-attribute name="content" value="/views/AdminProduct.jsp" />
+   </definition>
+      
+      <definition name="AdminPerson" extends="baseLayout">
+      <put-attribute name="title" value="Persona" />
+      <put-attribute name="heading" value="Persona" />
+      <put-attribute name="tagline" value="Admin Persona" />
+      <put-attribute name="content" value="/views/AdminPerson.jsp" />
+   </definition>
+   
+         <definition name="AdminOrder" extends="baseLayout">
+      <put-attribute name="title" value="Orden" />
+      <put-attribute name="heading" value="Orden" />
+      <put-attribute name="tagline" value="Admin Orden" />
+      <put-attribute name="content" value="/views/AdminOrder.jsp" />
+   </definition>
+   
+            <definition name="AdminOrderline" extends="baseLayout">
+      <put-attribute name="title" value="Linea Orden" />
+      <put-attribute name="heading" value="Linea Orden" />
+      <put-attribute name="tagline" value="Admin Linea Orden" />
+      <put-attribute name="content" value="/views/AdminOrderline.jsp" />
+   </definition>
+   
+   <definition name="login" extends="baseLayout">
+      <put-attribute name="title" value="Login" />
+      <put-attribute name="heading" value="Bienvenidos a la tienda!" />
+      <put-attribute name="tagline" value="Solo existe una tienda expectacular !!" />
+      <put-attribute name="content" value="/views/login.jsp" />
+   </definition>
+   
+   <definition name="cart" extends="baseLayout">
+      <put-attribute name="title" value="Carrito de Compras" />
+      <put-attribute name="heading" value="Carrito" />
+      <put-attribute name="tagline" value="Todos los productos seleccionados en su compra" />
+      <put-attribute name="content" value="/views/cart.jsp" />
+   </definition>
+      
+</tiles-definitions>
